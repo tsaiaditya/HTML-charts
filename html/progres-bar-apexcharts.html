@@ -1,0 +1,102 @@
+<div id="chart"></div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+var options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [50],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  legend: {
+                show: true,
+                showForSingleSeries: false,
+                showForNullSeries: true,
+                showForZeroSeries: true,
+                position: 'bottom',
+                horizontalAlign: 'center', 
+                floating: false,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial',
+                width: undefined,
+                height: undefined,
+                formatter: undefined,
+                offsetX: 0,
+                offsetY: 0,
+                labels: {
+                    colors: undefined,
+                    useSeriesColors: false
+                },
+                markers: {
+                    width: 12,
+                    height: 12,
+                    strokeWidth: 0,
+                    strokeColor: '#fff',
+                    radius: 12,
+                    customHTML: undefined,
+                    onClick: undefined,
+                    offsetX: 0,
+                    offsetY: 0
+                },
+                itemMargin: {
+                    horizontal: 20,
+                    vertical: 5
+                },
+                onItemClick: {
+                    toggleDataSeries: true
+                },
+                onItemHover: {
+                    highlightDataSeries: true
+                },
+            },
+  labels: ["Progress"]
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+</script>

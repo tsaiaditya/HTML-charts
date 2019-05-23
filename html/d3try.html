@@ -1,0 +1,243 @@
+<!-- <!doctype html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <p>First paragraph</p>
+    <p id = "lol">Second paragraph</p>
+
+    <script>
+        d3.select("body").append("p").text("Third paragraph");
+        d3.select("#lol").remove();
+        
+    </script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <script>
+        var data = [1, 2, 3];
+        var paragraph = d3.select("body")
+                .selectAll("p")
+                .data(data)
+                .text(function (d, i) {
+                    console.log("d: " + d);
+                    console.log("i: " + i);
+                    console.log("this: " + this);
+
+                    return d;
+                });
+    </script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+    <p>Error: This is dummy error.</p>
+    <p>Warning:This is dummy warning.</p>
+<script>
+    d3.selectAll("p").style("color", function(d, i) {
+            var text = this.innerText;
+        
+            if (text.includes("Error")) {
+                return "red";
+            } else if (text.includes("Warning")) {
+                return "yellow";
+            }
+    });
+</script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+<head>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: steelblue;
+            margin:5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<div> </div>
+<script>
+    d3.selectAll("div")
+      .on("mouseover", function(){
+          d3.select(this)
+            .style("background-color", "orange");
+
+          // Get current event info
+          console.log(d3.event);
+          
+          // Get x & y co-ordinates
+          console.log(d3.mouse(this));
+          d3.select("body").append("p").text("lol");
+      })
+      .on("mouseout", function(){
+          d3.select(this)
+            .style("background-color", "steelblue");
+            d3.select("p").remove();
+      });
+</script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    d3.select("#container")
+      .transition()
+      .duration(1000)
+      .style("background-color", "red");
+    d3.select("#container").on("mouseover",function(){
+        d3.select("this").style("background-color","grey");
+    });
+    d3.select("body").append("p").text("hello");
+</script>
+</body>
+</html> -->
+
+<!-- <html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <script>
+        var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 500).text("hello");
+        var bar1 = svg.append("rect").attr("fill", "blue").attr("x", 100).attr("y", 20).attr("height", 20).attr("width", 50);
+        var bar2 = svg.append("rect").attr("fill", "blue").attr("x", 180).attr("y", 20).attr("height", 20).attr("width", 50);
+    
+        update();
+    
+        function update() {
+            bar1.transition()
+                .ease(d3.easeLinear)
+                .duration(2000)
+                .attr("height",100);
+    
+            bar2.transition()
+                .ease(d3.easeLinear)
+                .duration(2000)
+                .delay(2000)
+                .attr("height",100);
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+    <body>
+            <script>
+        
+                 var myData = ["Hello World!","sample","sample 1","sample 2"];
+                 var sample = [1,2,3,4]
+                 var p = d3.select("body")
+                        .selectAll("p")
+                        .data(myData)
+                        .enter()
+                        .append("p")
+                        .text(function (d) {
+                            return d + " ";
+                        });
+             
+            </script>
+    </body>
+</html> -->
+
+<!-- <html>
+    <head>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+<body>
+        <script>
+            var matrix = [
+                            [1, 2, 3, 4],
+                            [5, 6, 7, 8],
+                            [9, 10, 11, 12],
+                            [13, 14, 15, 16]
+                        ];
+    
+            var tr = d3.select("body")
+                .append("table")  // adds <table>
+                .attr("border","1px solid black")
+                .selectAll("tr")  // selects all <tr>
+                .data(matrix)      // joins matrix array 
+                .enter()           // create placeholders for each row in the array
+                .append("tr");// create <tr> in each placeholder
+    
+            var td = tr.selectAll("td")
+                .data(function (d) {    // joins inner array of each row
+                    console.log(d);
+                    return d;
+                })
+                .enter()    // create placeholders for each element in an inner array
+                .append("td") // creates <td> in each placeholder
+                .attr("border","1px solid black")
+                .text(function (d) {
+                    console.log(d);
+                    return d; // add value of each inner array as a text in <td>
+                });
+        </script>
+</body>
+</html> -->
+
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>        
+    </head>
+    <body>
+        <script>
+            d3.json("../data/users.json", function(error, data) {
+            if(error)   
+                throw error;
+            d3.select("body")
+                .selectAll("p")
+                .data(data)
+                .enter()
+                .append("p")
+                .text(function(d) {
+                    return d.name + ", " + d.age;
+                });
+            });
+            // for(let i = 0; i<data.length; i++){
+            //     console.log(data[i].name);
+            //     console.log(data[i].age);
+            // }
+        </script>        
+    </body>
+</html>

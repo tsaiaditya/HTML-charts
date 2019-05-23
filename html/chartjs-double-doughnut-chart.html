@@ -1,0 +1,87 @@
+<div id="canvas-holder" style="width:40%">
+    <canvas id="chart-area" width="500" height="500">
+</div>
+<script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<script>
+var randomScalingFactor = function() {
+    return Math.round(Math.random() * 100);
+};
+var randomColorFactor = function() {
+    return Math.round(Math.random() * 255);
+};
+
+var config = {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+            ],
+                backgroundColor: [
+                "#F7464A",
+                "#46BFBD",
+                "#FDB45C",
+                "#949FB1",
+                "#4D5360",
+            ],
+        }, {
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+            ],
+                backgroundColor: [
+                "#F7464A",
+                "#46BFBD",
+                "#FDB45C",
+                "#949FB1",
+                "#4D5360",
+            ],
+        }, {
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+            ],
+                backgroundColor: [
+                "#F7464A",
+                "#46BFBD",
+                "#FDB45C",
+                "#949FB1",
+                "#4D5360",
+            ],
+        }],
+        labels: [
+            "Red",
+            "Green",
+            "Yellow",
+            "Grey",
+            "Dark Grey"
+        ]
+    },
+    options: {
+        responsive: true,
+        animation: {
+					animateScale: true,
+					animateRotate: true
+                },
+        title: {
+					display: true,
+					text: 'Chart.js Doughnut Chart'
+				}
+    }
+};
+
+var ctx = document.getElementById("chart-area").getContext("2d");
+var myDoughnut = new Chart(ctx, config);
+
+</script>

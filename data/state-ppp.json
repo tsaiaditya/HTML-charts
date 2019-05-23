@@ -1,0 +1,67 @@
+[
+    {
+        "state" : "Tamil Nadu",
+        "values": [
+            {
+                "value": 10,
+                "type": "PPP"
+            },
+            {
+                "value":20,
+                "type": "HAM"
+            }
+        ]
+    },
+    {
+        "state" : "Sikkim",
+        "values": [
+            {
+                "value": 60,
+                "type": "PPP"
+            },
+            {
+                "value":30,
+                "type":"HAM"
+            }
+        ]
+    },
+    {
+        "state" : "Karnataka",
+        "values": [
+            {
+                "value": 50,
+                "type": "PPP"
+            },
+            {
+                "value":10,
+                "type":"HAM"
+            }
+        ]
+    },
+    {
+        "state" : "Andra Pradesh",
+        "values": [
+            {
+                "value": 30,
+                "type": "PPP"
+            },
+            {
+                "value":40,
+                "type":"HAM"
+            }
+        ]
+    },
+    {
+        "state" : "Maharashtra",
+        "values": [
+            {
+                "value": 40,
+                "type": "PPP"
+            },
+            {
+                "value":5,
+                "type":"HAM"
+            }
+        ]
+    }
+]

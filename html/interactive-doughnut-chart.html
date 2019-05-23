@@ -1,0 +1,115 @@
+<!-- Uses High charts -->
+<style>
+body {
+    background-color:rgba(96, 72, 193, 1);
+}
+</style>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script>
+// Specify all properties here:
+var MIN = 0;
+var MAX = 100;
+var VALUES_WHITE = [20, 20, 20, 20, 20];
+var VALUES = [40, 30, 70, 95, 65];
+var COLORS = ['#1FFFF0', '#FFCD05', '#68EB05', '#EB13EB', '#A7EB09'];
+var CATEGORIES = ['Activity', 'Weight', 'Sleep', 'Health', 'Diet'];
+var BORDERWIDTH_CHART_1 = 20;
+var BORDER_COLOR = 'rgba(96, 72, 193, 1)';
+var OFFSET_ANGLE_CHART_2 = BORDERWIDTH_CHART_1/4;
+
+// Code starts here:
+var options = {
+        chart: {
+            renderTo: 'container',
+            backgroundColor:'rgba(96, 72, 193, 1)',
+        },
+        title: {
+            text: 'Statistics',
+            style: {"color": "#FFFFFF", "fontFamily":"Consolas"},
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+            formatter: function() {
+                var s;
+                if (this.point.name == 'Slice') { // the pie chart
+                    return false;
+                } else {
+                    s = ''+
+                        this.point.name;
+                }
+                return s;
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'background',
+            data: VALUES_WHITE,
+            enableMouseTracking: false,
+            borderColor: BORDER_COLOR,
+            borderWidth: BORDERWIDTH_CHART_1,
+            innerSize: '50%',
+            size: '80%',
+            colors: ['white'],
+            dataLabels: false,
+            center: [350, 150],
+        }]
+};
+
+var arrayLength = VALUES.length;
+
+for (var i = 0; i < arrayLength; i++) {
+    var perc  = (VALUES[i]-MIN)/(MAX-MIN);
+    var ratio = (VALUES[i]-MIN)/(MAX-MIN + 4*OFFSET_ANGLE_CHART_2);
+    var begin = OFFSET_ANGLE_CHART_2+(360/VALUES.length)*i;
+    var end   = OFFSET_ANGLE_CHART_2+(360/VALUES.length)*i + ratio*(360/VALUES.length);
+    var color = [COLORS[i]];
+    var label = CATEGORIES[i] + ' (' + perc*100 + '%)';
+    var value = perc*100;
+    
+    options.series.push({
+            type: 'pie',
+            name: 'foreground',
+            cumulative: 1, 
+            data: [{
+                name: label,
+                y: value}],
+            borderColor: 'white',
+            borderWidth: 0,
+            innerSize: '81%',
+            size: '55%',
+            colors: color,
+            dataLabels: {
+                color: 'white',
+                connectorWidth: 0,
+                distance: 45,
+                style: {"fontSize": "20px", "fontFamily":"Consolas"},
+            },
+            center: [350, 150],
+            startAngle: 1+begin,
+            endAngle: 1+end,}
+    );
+}
+
+// and create the chart
+$(document).ready(function() {
+    var chart = new Highcharts.Chart(options);
+});
+
+// Written by Jean-Paul (http://stackoverflow.com/users/2431885/jean-paul)
+// Written for the following Stack Overflow Question: 
+//
+// http://stackoverflow.com/questions/27003627/high-charts-donut-chart-fill-inside-but-leave-white-in-unfilled-area 
+//
+// 
+// Enjoy the code :)
+// And enjoy the coffee...
+//
+//
+
+</script>
